@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", serif;
+  --font-body: "Work Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --color-ink: #14120E;
+  --color-ink-soft: #211E17;
+  --color-paper: #F4EFE4;
+  --color-paper-dim: #E7DFCC;
+  --color-amber: #E8A33D;
+  --color-amber-dim: #B97A24;
+  --color-rust: #A83B2E;
+  --color-slate: #3A5F66;
+  --color-slate-bright: #5C8A92;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
