@@ -111,7 +111,7 @@ export default function Courses() {
 
   return (
     <>
-      <section className="pt-36 pb-20">
+      <section className="pt-40 pb-20">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <Reveal>
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-6">Watch &amp; Learn</p>

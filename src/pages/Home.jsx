@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import Reveal from '../components/Reveal'
+import ExpandingHero from '../components/ExpandingHero'
 import useSeo from '../components/useSeo'
 import hero from '../assets/stock/hero.webp'
 import storyPregnancy from '../assets/stock/story-pregnancy-prejudice.webp'
@@ -79,36 +81,13 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
-        <img
-          src={hero}
-          alt="Documentary film crew capturing an interview in the field"
-          className="absolute inset-0 h-full w-full object-cover opacity-30"
-          loading="eager"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/40" />
-        <div className="relative mx-auto max-w-4xl px-6 text-center">
-          <Reveal>
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-6">
-              00:00:01 — Listen, Learn, Lead
-            </p>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h1 className="font-display text-4xl sm:text-6xl leading-[1.1] text-paper mb-8">
-              We Don&rsquo;t Have To Wait For The Story To Change To Create Change.
-            </h1>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <Link
-              to="/courses"
-              className="inline-block rounded-full bg-amber px-8 py-4 text-ink font-mono text-sm uppercase tracking-widest hover:bg-amber-dim transition-colors"
-            >
-              Get Access
-            </Link>
-          </Reveal>
-        </div>
-      </section>
+      {/* Hero — scroll media expansion */}
+      <ExpandingHero
+        image={hero}
+        alt="Documentary film crew capturing an interview in the field"
+        eyebrow="00:00:01 — Listen, Learn, Lead"
+        heading={<>We Don&rsquo;t Have To Wait For The Story To Change To Create Change.</>}
+      />
 
       {/* Inspiration */}
       <section className="py-24 border-t border-white/5">
@@ -199,23 +178,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-24 border-t border-white/5 bg-ink-soft">
+      {/* Testimonials — light alternating section */}
+      <section className="py-24 bg-paper text-ink">
         <div className="mx-auto max-w-5xl px-6">
           <Reveal className="text-center mb-16">
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-4">Testimonials</p>
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-dim mb-4">Testimonials</p>
             <h2 className="font-display text-3xl sm:text-4xl">Here&rsquo;s What People Are Saying About DocuCourse</h2>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-8">
             {TESTIMONIALS.map((t, i) => (
               <Reveal key={t.name} delay={i * 0.1}>
-                <blockquote className="h-full flex flex-col rounded-2xl border border-white/10 p-8">
+                <blockquote className="h-full flex flex-col rounded-2xl border border-ink/10 bg-white p-8 shadow-sm">
                   <span className="font-display text-5xl text-amber leading-none mb-4">&ldquo;</span>
-                  <p className="text-paper-dim text-sm leading-relaxed flex-1">{t.quote}</p>
+                  <p className="text-ink/70 text-sm leading-relaxed flex-1">{t.quote}</p>
                   <footer className="mt-6 font-mono text-xs uppercase tracking-widest">
-                    <div className="text-paper">{t.name}</div>
-                    <div className="text-slate-bright mt-1">{t.role}</div>
-                    <div className="text-paper-dim/70">{t.org}</div>
+                    <div className="text-ink">{t.name}</div>
+                    <div className="text-amber-dim mt-1">{t.role}</div>
+                    <div className="text-ink/50">{t.org}</div>
                   </footer>
                 </blockquote>
               </Reveal>

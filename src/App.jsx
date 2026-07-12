@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import ConceptBanner from './components/ConceptBanner'
 import Home from './pages/Home'
 import Courses from './pages/Courses'
 import About from './pages/About'
@@ -19,6 +20,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-ink text-paper">
       <ScrollToTop />
+      <ConceptBanner />
       <Header />
       <main>
         <Routes>

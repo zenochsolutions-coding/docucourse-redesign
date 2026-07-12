@@ -5,15 +5,16 @@
   --font-body: "Work Sans", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
 
-  --color-ink: #14120E;
-  --color-ink-soft: #211E17;
-  --color-paper: #F4EFE4;
-  --color-paper-dim: #E7DFCC;
-  --color-amber: #E8A33D;
-  --color-amber-dim: #B97A24;
-  --color-rust: #A83B2E;
-  --color-slate: #3A5F66;
-  --color-slate-bright: #5C8A92;
+  --color-ink: #050505;
+  --color-ink-soft: #161616;
+  --color-paper: #F5F5F5;
+  --color-paper-dim: #A0A0A0;
+  --color-amber: #00BFA6;
+  --color-amber-dim: #00A390;
+  --color-rust: #D64550;
+  --color-slate: #6B7172;
+  --color-slate-bright: #2DD4BF;
+  --color-mint: #66FFE6;
 }
 
 html {

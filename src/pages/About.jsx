@@ -1,4 +1,5 @@
 import Reveal from '../components/Reveal'
+import ParallaxBg from '../components/ParallaxBg'
 import useSeo from '../components/useSeo'
 import about from '../assets/stock/about.webp'
 
@@ -30,13 +31,8 @@ export default function About() {
 
   return (
     <>
-      <section className="relative pt-36 pb-24 overflow-hidden">
-        <img
-          src={about}
-          alt="Diverse community members gathered in discussion"
-          className="absolute inset-0 h-full w-full object-cover opacity-20"
-          loading="eager"
-        />
+      <section className="relative pt-40 pb-24 overflow-hidden">
+        <ParallaxBg image={about} alt="Diverse community members gathered in discussion" opacity={0.2} />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/85 to-ink/60" />
         <div className="relative mx-auto max-w-3xl px-6 text-center">
           <Reveal>

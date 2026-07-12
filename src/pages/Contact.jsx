@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Reveal from '../components/Reveal'
+import ParallaxBg from '../components/ParallaxBg'
 import useSeo from '../components/useSeo'
 import contactImg from '../assets/stock/contact.webp'
 
@@ -33,13 +34,8 @@ export default function Contact() {
 
   return (
     <>
-      <section className="relative pt-36 pb-20 overflow-hidden">
-        <img
-          src={contactImg}
-          alt="Two people in a warm, attentive conversation"
-          className="absolute inset-0 h-full w-full object-cover opacity-20"
-          loading="eager"
-        />
+      <section className="relative pt-40 pb-20 overflow-hidden">
+        <ParallaxBg image={contactImg} alt="Two people in a warm, attentive conversation" opacity={0.2} />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/85 to-ink/60" />
         <div className="relative mx-auto max-w-3xl px-6 text-center">
           <Reveal>
