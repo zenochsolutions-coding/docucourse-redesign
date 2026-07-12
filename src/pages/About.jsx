@@ -1,5 +1,6 @@
 import Reveal from '../components/Reveal'
 import ParallaxBg from '../components/ParallaxBg'
+import HorizontalScrollPanels from '../components/HorizontalScrollPanels'
 import useSeo from '../components/useSeo'
 import about from '../assets/stock/about.webp'
 
@@ -50,28 +51,19 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-20 border-t border-white/5">
-        <div className="mx-auto max-w-5xl px-6">
-          <Reveal className="text-center mb-16">
+      <section className="border-t border-white/5">
+        <div className="pt-20 text-center px-6">
+          <Reveal>
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-4">Gain Insight</p>
             <h2 className="font-display text-3xl sm:text-4xl max-w-2xl mx-auto">
               Join us on a compelling journey as we engage with passionate community changemakers.
             </h2>
+            <p className="font-mono text-[11px] uppercase tracking-widest text-slate-bright mt-6">
+              Scroll to continue &darr;
+            </p>
           </Reveal>
-          <div className="grid md:grid-cols-3 gap-8">
-            {PILLARS.map((p, i) => (
-              <Reveal key={p.title} delay={i * 0.1}>
-                <div className="h-full rounded-2xl border border-white/10 bg-ink-soft p-8 hover:border-amber/40 transition-colors">
-                  <h3 className="font-display text-2xl text-amber mb-2">{p.title}</h3>
-                  <p className="text-sm font-mono uppercase tracking-wide text-slate-bright mb-4">
-                    {p.tagline}
-                  </p>
-                  <p className="text-paper-dim text-sm leading-relaxed">{p.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </div>
+        <HorizontalScrollPanels panels={PILLARS} />
       </section>
 
       <section className="py-20 border-t border-white/5 text-center bg-ink-soft">

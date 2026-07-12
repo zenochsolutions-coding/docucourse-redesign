@@ -1,4 +1,5 @@
 import Reveal from '../components/Reveal'
+import ScrollTimeline from '../components/ScrollTimeline'
 import useSeo from '../components/useSeo'
 
 const COURSES = [
@@ -41,10 +42,10 @@ const COURSES = [
 ]
 
 const STEPS = [
-  ['01', 'Choose a DocuCourse', 'Select one or all DocuCourse modules'],
-  ['02', 'Watch the Film', 'View the full documentary at your own pace'],
-  ['03', 'Complete Surveys', 'No quizzes or worksheets required'],
-  ['04', 'Receive Certificate', 'Issued directly to your email address'],
+  { num: '01', title: 'Choose a DocuCourse', body: 'Select one or all DocuCourse modules' },
+  { num: '02', title: 'Watch the Film', body: 'View the full documentary at your own pace' },
+  { num: '03', title: 'Complete Surveys', body: 'No quizzes or worksheets required' },
+  { num: '04', title: 'Receive Certificate', body: 'Issued directly to your email address' },
 ]
 
 const COMPARE = {
@@ -134,28 +135,20 @@ export default function Courses() {
         </div>
       </section>
 
-      {/* How it works */}
-      <section className="py-20 border-t border-white/5">
+      {/* How it works — scroll-drawn timeline */}
+      <section className="py-24 border-t border-white/5">
         <div className="mx-auto max-w-5xl px-6">
-          <Reveal className="text-center mb-14">
+          <Reveal className="text-center mb-16">
             <h2 className="font-display text-3xl sm:text-4xl mb-3">How It Works</h2>
             <p className="text-paper-dim">
               Continuing Education, Redefined. Our process is simple, impactful, and built around real people&rsquo;s stories.
             </p>
           </Reveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {STEPS.map(([num, title, body], i) => (
-              <Reveal key={num} delay={i * 0.08}>
-                <div className="text-center">
-                  <div className="font-mono text-amber text-sm mb-2">{num}</div>
-                  <h3 className="font-display text-lg mb-2">{title}</h3>
-                  <p className="text-paper-dim text-sm">{body}</p>
-                </div>
-              </Reveal>
-            ))}
+          <div className="py-20">
+            <ScrollTimeline steps={STEPS} />
           </div>
           <Reveal delay={0.2}>
-            <p className="text-center text-paper-dim text-sm mt-12 max-w-2xl mx-auto">
+            <p className="text-center text-paper-dim text-sm mt-4 max-w-2xl mx-auto">
               Get 12 months of unlimited access to the purchased module(s), making DocuCourse the
               perfect fit for personal learning, orientations, retreats, and trainings.
             </p>
