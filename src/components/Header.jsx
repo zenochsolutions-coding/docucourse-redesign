@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const LINKS = [
@@ -12,6 +12,7 @@ const LINKS = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const { pathname } = useLocation()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -20,12 +21,22 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Text/icon colors flip based on background state
-  const textColor = scrolled ? 'text-paper' : 'text-ink'
-  const textDimColor = scrolled ? 'text-paper-dim' : 'text-ink/70'
-  const hoverColor = scrolled ? 'hover:text-paper' : 'hover:text-ink'
-  const accentColor = scrolled ? 'text-amber' : 'text-amber-dim'
-  const barColor = scrolled ? 'bg-paper' : 'bg-ink'
+  // Only the Home hero photo is light enough for dark header text.
+  // Every other page's top section is dark (dim hero overlay or plain
+  // dark background), so light text is correct there even before scrolling.
+  const overLightBg = pathname === '/' && !scrolled
+
+  const textColor = overLightBg ? 'text-ink' : 'text-paper'
+  const textDimColor = overLightBg ? 'text-ink/70' : 'text-paper-dim'
+  const hoverColor = overLightBg ? 'hover:text-ink' : 'hover:text-paper'
+  // Teal accent can't reliably hit 4.5:1 at small (12px) nav text size even
+  // with a scrim behind a photo, so the active/accent nav state falls back to
+  // solid ink (bold, for a visual cue) over the light hero. The logo mark is
+  // large enough (24px) that amber-dim still clears 3:1 there, so it keeps
+  // its color for brand consistency.
+  const accentColor = overLightBg ? 'text-ink font-semibold' : 'text-amber'
+  const logoAccentColor = overLightBg ? 'text-amber-dim' : 'text-amber'
+  const barColor = overLightBg ? 'bg-ink' : 'bg-paper'
 
   return (
     <header
@@ -34,7 +45,7 @@ export default function Header() {
     >
       <div className="mx-auto max-w-7xl px-6 flex items-center justify-between">
         <NavLink to="/" className={`font-display text-2xl tracking-tight transition-colors duration-300 ${textColor}`}>
-          Docu<span className={`transition-colors duration-300 ${accentColor}`}>Course</span>
+          Docu<span className={`transition-colors duration-300 ${logoAccentColor}`}>Course</span>
         </NavLink>
 
         <nav className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest">

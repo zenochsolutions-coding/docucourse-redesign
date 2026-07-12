@@ -182,18 +182,18 @@ export default function Home() {
       <section className="py-24 bg-paper text-ink">
         <div className="mx-auto max-w-5xl px-6">
           <Reveal className="text-center mb-16">
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-dim mb-4">Testimonials</p>
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-deep mb-4">Testimonials</p>
             <h2 className="font-display text-3xl sm:text-4xl">Here&rsquo;s What People Are Saying About DocuCourse</h2>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-8">
             {TESTIMONIALS.map((t, i) => (
               <Reveal key={t.name} delay={i * 0.1}>
                 <blockquote className="h-full flex flex-col rounded-2xl border border-ink/10 bg-white p-8 shadow-sm">
-                  <span className="font-display text-5xl text-amber leading-none mb-4">&ldquo;</span>
+                  <span className="font-display text-5xl text-amber-deep leading-none mb-4">&ldquo;</span>
                   <p className="text-ink/70 text-sm leading-relaxed flex-1">{t.quote}</p>
                   <footer className="mt-6 font-mono text-xs uppercase tracking-widest">
                     <div className="text-ink">{t.name}</div>
-                    <div className="text-amber-dim mt-1">{t.role}</div>
+                    <div className="text-amber-deep mt-1">{t.role}</div>
                     <div className="text-ink/50">{t.org}</div>
                   </footer>
                 </blockquote>

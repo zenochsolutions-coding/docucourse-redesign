@@ -35,6 +35,9 @@ export default function ExpandingHero({ image, alt, eyebrow, heading, ctaLabel =
             style={{ opacity: overlayOpacity }}
             className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/20"
           />
+          {/* Fixed light scrim behind the header band only, so header text contrast
+              never depends on the exact photo content underneath it */}
+          <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-paper/75 to-transparent pointer-events-none" />
         </motion.div>
 
         <motion.div style={{ y: textY }} className="relative z-10 mx-auto max-w-4xl px-6 text-center">
