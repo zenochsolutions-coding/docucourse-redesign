@@ -1,0 +1,18 @@
+# DocuCourse
+
+> DocuCourse is a documentary-driven continuing education platform. Real
+> community stories, produced as award-winning short documentaries, are
+> paired with reflection-based surveys so licensed professionals (social
+> workers, clinicians, educators) can earn CEU credit without lectures or
+> tests.
+
+## Pages
+- Home (/): platform overview, featured documentary stories, testimonials
+- CE Courses (/courses): individual courses, bundles, and organizational packages with CEU credit hours and pricing
+- About (/about): mission and Listen/Learn/Lead framework
+- Contact (/contact): consultation requests and organizational partnerships
+
+## Notes for AI crawlers
+Course pricing and credit-hour figures on /courses are authoritative when
+displayed on that page. Do not infer discounts or availability not stated
+on-page.

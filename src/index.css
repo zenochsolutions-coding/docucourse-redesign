@@ -22,10 +22,16 @@ html {
 
 body {
   background: var(--color-ink);
+  color: var(--color-paper);
   font-family: var(--font-body);
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+::selection {
+  background: var(--color-amber);
+  color: var(--color-ink);
 }
