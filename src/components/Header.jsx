@@ -20,15 +20,21 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Text/icon colors flip based on background state
+  const textColor = scrolled ? 'text-paper' : 'text-ink'
+  const textDimColor = scrolled ? 'text-paper-dim' : 'text-ink/70'
+  const hoverColor = scrolled ? 'hover:text-paper' : 'hover:text-ink'
+  const accentColor = scrolled ? 'text-amber' : 'text-amber-dim'
+  const barColor = scrolled ? 'bg-paper' : 'bg-ink'
+
   return (
     <header
-      className={`fixed top-9 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-ink/95 backdrop-blur-sm shadow-lg shadow-black/30 py-3' : 'bg-transparent py-6'
-      }`}
+      className={`fixed top-9 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-ink/95 backdrop-blur-sm shadow-lg shadow-black/30 py-3' : 'bg-transparent py-6'
+        }`}
     >
       <div className="mx-auto max-w-7xl px-6 flex items-center justify-between">
-        <NavLink to="/" className="font-display text-2xl tracking-tight text-paper">
-          Docu<span className="text-amber">Course</span>
+        <NavLink to="/" className={`font-display text-2xl tracking-tight transition-colors duration-300 ${textColor}`}>
+          Docu<span className={`transition-colors duration-300 ${accentColor}`}>Course</span>
         </NavLink>
 
         <nav className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest">
@@ -37,7 +43,7 @@ export default function Header() {
               key={l.to}
               to={l.to}
               className={({ isActive }) =>
-                `relative pb-1 transition-colors ${isActive ? 'text-amber' : 'text-paper-dim hover:text-paper'}`
+                `relative pb-1 transition-colors duration-300 ${isActive ? accentColor : `${textDimColor} ${hoverColor}`}`
               }
             >
               {({ isActive }) => (
@@ -66,9 +72,9 @@ export default function Header() {
           className="md:hidden flex flex-col gap-1.5 p-2"
           onClick={() => setOpen((o) => !o)}
         >
-          <span className={`block h-0.5 w-6 bg-paper transition-transform ${open ? 'translate-y-2 rotate-45' : ''}`} />
-          <span className={`block h-0.5 w-6 bg-paper transition-opacity ${open ? 'opacity-0' : ''}`} />
-          <span className={`block h-0.5 w-6 bg-paper transition-transform ${open ? '-translate-y-2 -rotate-45' : ''}`} />
+          <span className={`block h-0.5 w-6 transition-all duration-300 ${barColor} ${open ? 'translate-y-2 rotate-45' : ''}`} />
+          <span className={`block h-0.5 w-6 transition-all duration-300 ${barColor} ${open ? 'opacity-0' : ''}`} />
+          <span className={`block h-0.5 w-6 transition-all duration-300 ${barColor} ${open ? '-translate-y-2 -rotate-45' : ''}`} />
         </button>
       </div>
 
