@@ -29,13 +29,12 @@ export default function Header() {
   const textColor = overLightBg ? 'text-ink' : 'text-paper'
   const textDimColor = overLightBg ? 'text-ink/70' : 'text-paper-dim'
   const hoverColor = overLightBg ? 'hover:text-ink' : 'hover:text-paper'
-  // Teal accent can't reliably hit 4.5:1 at small (12px) nav text size even
-  // with a scrim behind a photo, so the active/accent nav state falls back to
-  // solid ink (bold, for a visual cue) over the light hero. The logo mark is
-  // large enough (24px) that amber-dim still clears 3:1 there, so it keeps
-  // its color for brand consistency.
+  // Teal accent measured well under 3:1 against the real scrimmed hero photo
+  // (verified with live pixel sampling, not just estimated), at both nav-link
+  // and logo sizes. Both fall back to solid ink over the light hero; teal
+  // returns once the header goes dark on scroll, where it's confirmed to pass.
   const accentColor = overLightBg ? 'text-ink font-semibold' : 'text-amber'
-  const logoAccentColor = overLightBg ? 'text-amber-dim' : 'text-amber'
+  const logoAccentColor = overLightBg ? 'text-ink' : 'text-amber'
   const barColor = overLightBg ? 'bg-ink' : 'bg-paper'
 
   return (
