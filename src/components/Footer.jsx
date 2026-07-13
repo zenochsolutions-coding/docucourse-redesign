@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 grid gap-10 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="font-display text-2xl text-paper mb-3">
-            Docu<span className="text-amber">Course</span>
+            Docu<span className="text-teal">Course</span>
           </div>
           <p className="text-paper-dim text-sm max-w-sm leading-relaxed">
             DocuCourse is a transformative and comprehensive multimedia platform that offers a
@@ -16,14 +16,14 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="font-mono text-xs uppercase tracking-widest text-amber mb-4">Contact Us</h3>
+          <h3 className="font-mono text-xs uppercase tracking-widest text-teal mb-4">Contact Us</h3>
           <ul className="text-sm text-paper-dim space-y-2">
             <li>Headquartered in Kansas City, Missouri 64112</li>
             <li>
-              <a href="tel:8166639794" className="hover:text-amber transition-colors">816-663-9794</a>
+              <a href="tel:8166639794" className="hover:text-teal transition-colors">816-663-9794</a>
             </li>
             <li>
-              <a href="mailto:info@docucourse.org" className="hover:text-amber transition-colors">
+              <a href="mailto:info@docucourse.org" className="hover:text-teal transition-colors">
                 info@docucourse.org
               </a>
             </li>
@@ -31,12 +31,12 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="font-mono text-xs uppercase tracking-widest text-amber mb-4">Quick Links</h3>
+          <h3 className="font-mono text-xs uppercase tracking-widest text-teal mb-4">Quick Links</h3>
           <ul className="text-sm text-paper-dim space-y-2">
-            <li><Link to="/about" className="hover:text-amber transition-colors">About</Link></li>
-            <li><Link to="/courses" className="hover:text-amber transition-colors">CE Courses</Link></li>
-            <li><Link to="/contact" className="hover:text-amber transition-colors">Contact</Link></li>
-            <li><Link to="/courses" className="hover:text-amber transition-colors">Get Access</Link></li>
+            <li><Link to="/about" className="hover:text-teal transition-colors">About</Link></li>
+            <li><Link to="/courses" className="hover:text-teal transition-colors">CE Courses</Link></li>
+            <li><Link to="/contact" className="hover:text-teal transition-colors">Contact</Link></li>
+            <li><Link to="/courses" className="hover:text-teal transition-colors">Get Access</Link></li>
           </ul>
         </div>
       </div>

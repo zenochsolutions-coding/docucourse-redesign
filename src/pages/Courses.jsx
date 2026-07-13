@@ -77,21 +77,21 @@ const REVIEWS = [
 function CourseCard({ course }) {
   return (
     <Reveal className="h-full">
-      <article className="h-full flex flex-col rounded-2xl border border-white/10 bg-ink-soft p-8 hover:border-amber/40 transition-colors">
+      <article className="h-full flex flex-col rounded-2xl border border-white/10 bg-ink-soft p-8 hover:border-teal/40 transition-colors">
         <h3 className="font-display text-xl mb-4 leading-snug">{course.title}</h3>
         <p className="text-paper-dim text-sm leading-relaxed flex-1">{course.body}</p>
         <div className="mt-6 flex items-center justify-between">
-          <span className="font-display text-3xl text-amber">
+          <span className="font-display text-3xl text-teal">
             {course.price !== null ? `$${course.price}` : 'Custom'}
           </span>
           {course.cta === 'purchase' ? (
-            <button className="rounded-full bg-amber px-6 py-2.5 text-ink font-mono text-xs uppercase tracking-widest hover:bg-amber-dim transition-colors">
+            <button className="rounded-full bg-teal px-6 py-2.5 text-ink font-mono text-xs uppercase tracking-widest hover:bg-teal-dim transition-colors">
               Purchase
             </button>
           ) : (
             <a
               href="/contact"
-              className="rounded-full border border-amber px-6 py-2.5 text-amber font-mono text-xs uppercase tracking-widest hover:bg-amber hover:text-ink transition-colors"
+              className="rounded-full border border-teal px-6 py-2.5 text-teal font-mono text-xs uppercase tracking-widest hover:bg-teal hover:text-ink transition-colors"
             >
               Contact Us
             </a>
@@ -115,7 +115,7 @@ export default function Courses() {
       <section className="pt-40 pb-20">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-6">Watch &amp; Learn</p>
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal mb-6">Watch &amp; Learn</p>
             <h1 className="font-display text-4xl sm:text-5xl leading-tight mb-6">
               Turn real-life stories into practice-ready insight, while earning CEUs
             </h1>
@@ -124,7 +124,7 @@ export default function Courses() {
               award-winning documentaries and earn CEU hours through reflection, not tests.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#select" className="rounded-full bg-amber px-8 py-4 text-ink font-mono text-sm uppercase tracking-widest hover:bg-amber-dim transition-colors">
+              <a href="#select" className="rounded-full bg-teal px-8 py-4 text-ink font-mono text-sm uppercase tracking-widest hover:bg-teal-dim transition-colors">
                 Start Learning Today
               </a>
               <span className="font-mono text-xs uppercase tracking-widest text-slate-bright self-center">
@@ -160,7 +160,7 @@ export default function Courses() {
       <section id="select" className="py-20 border-t border-white/5 scroll-mt-24">
         <div className="mx-auto max-w-6xl px-6">
           <Reveal className="text-center mb-14">
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-4">Select A Product</p>
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal mb-4">Select A Product</p>
           </Reveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {COURSES.map((c) => (
@@ -187,19 +187,19 @@ export default function Courses() {
                 <ul className="space-y-3 text-sm text-paper-dim">
                   {COMPARE.traditional.map((t) => (
                     <li key={t} className="flex items-center gap-2">
-                      <span className="text-rust">&times;</span> {t}
+                      <span className="text-coral">&times;</span> {t}
                     </li>
                   ))}
                 </ul>
               </div>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className="rounded-2xl border border-amber/40 p-8">
-                <h3 className="font-mono text-xs uppercase tracking-widest text-amber mb-4">DocuCourse</h3>
+              <div className="rounded-2xl border border-teal/40 p-8">
+                <h3 className="font-mono text-xs uppercase tracking-widest text-teal mb-4">DocuCourse</h3>
                 <ul className="space-y-3 text-sm text-paper">
                   {COMPARE.docucourse.map((t) => (
                     <li key={t} className="flex items-center gap-2">
-                      <span className="text-amber">&#10003;</span> {t}
+                      <span className="text-teal">&#10003;</span> {t}
                     </li>
                   ))}
                 </ul>
@@ -225,7 +225,7 @@ export default function Courses() {
               With every 50 signups, you&rsquo;ll earn a 10% return on your investment. So as your
               staff grows in knowledge, so does your impact and reinvestment power.
             </p>
-            <a href="/contact" className="inline-block rounded-full bg-amber px-8 py-4 text-ink font-mono text-sm uppercase tracking-widest hover:bg-amber-dim transition-colors">
+            <a href="/contact" className="inline-block rounded-full bg-teal px-8 py-4 text-ink font-mono text-sm uppercase tracking-widest hover:bg-teal-dim transition-colors">
               Contact Us Today To Get Started
             </a>
           </Reveal>

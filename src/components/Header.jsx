@@ -33,8 +33,8 @@ export default function Header() {
   // (verified with live pixel sampling, not just estimated), at both nav-link
   // and logo sizes. Both fall back to solid ink over the light hero; teal
   // returns once the header goes dark on scroll, where it's confirmed to pass.
-  const accentColor = overLightBg ? 'text-ink font-semibold' : 'text-amber'
-  const logoAccentColor = overLightBg ? 'text-ink' : 'text-amber'
+  const accentColor = overLightBg ? 'text-ink font-semibold' : 'text-teal'
+  const logoAccentColor = overLightBg ? 'text-ink' : 'text-teal'
   const barColor = overLightBg ? 'bg-ink' : 'bg-paper'
 
   return (
@@ -62,7 +62,7 @@ export default function Header() {
                   {isActive && (
                     <motion.span
                       layoutId="nav-underline"
-                      className="absolute left-0 -bottom-0.5 h-[2px] w-full bg-amber"
+                      className="absolute left-0 -bottom-0.5 h-[2px] w-full bg-teal"
                     />
                   )}
                 </>
@@ -71,7 +71,7 @@ export default function Header() {
           ))}
           <NavLink
             to="/courses"
-            className="rounded-full bg-amber px-5 py-2 text-ink font-mono text-xs uppercase tracking-widest hover:bg-amber-dim transition-colors"
+            className="rounded-full bg-teal px-5 py-2 text-ink font-mono text-xs uppercase tracking-widest hover:bg-teal-dim transition-colors"
           >
             Get Access
           </NavLink>
@@ -103,7 +103,7 @@ export default function Header() {
                   key={l.to}
                   to={l.to}
                   onClick={() => setOpen(false)}
-                  className={({ isActive }) => `py-3 border-b border-white/10 ${isActive ? 'text-amber' : 'text-paper-dim'}`}
+                  className={({ isActive }) => `py-3 border-b border-white/10 ${isActive ? 'text-teal' : 'text-paper-dim'}`}
                 >
                   {l.label}
                 </NavLink>

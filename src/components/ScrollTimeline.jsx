@@ -17,7 +17,7 @@ export default function ScrollTimeline({ steps }) {
       {/* drawn progress line */}
       <motion.div
         style={{ height: lineHeight }}
-        className="absolute left-6 top-2 w-px bg-amber origin-top"
+        className="absolute left-6 top-2 w-px bg-teal origin-top"
       />
 
       <div className="flex flex-col gap-16">
@@ -45,7 +45,7 @@ function TimelineStep({ step, target, scrollYProgress }) {
       >
         <motion.div
           style={{ opacity: litOpacity }}
-          className="absolute inset-0 rounded-full bg-amber"
+          className="absolute inset-0 rounded-full bg-teal"
         />
         <span className="relative font-mono text-xs font-semibold">
           <motion.span style={{ opacity: unlitOpacity }} className="absolute inset-0 flex items-center justify-center text-paper-dim">

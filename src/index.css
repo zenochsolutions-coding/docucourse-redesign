@@ -9,10 +9,10 @@
   --color-ink-soft: #161616;
   --color-paper: #F5F5F5;
   --color-paper-dim: #A0A0A0;
-  --color-amber: #00BFA6;
-  --color-amber-dim: #00A390;
-  --color-amber-deep: #00695C;
-  --color-rust: #E05563;
+  --color-teal: #00BFA6;
+  --color-teal-dim: #00A390;
+  --color-teal-deep: #00695C;
+  --color-coral: #E05563;
   --color-slate: #6B7172;
   --color-slate-bright: #2DD4BF;
   --color-mint: #66FFE6;
@@ -34,6 +34,6 @@ body {
 }
 
 ::selection {
-  background: var(--color-amber);
+  background: var(--color-teal);
   color: var(--color-ink);
 }

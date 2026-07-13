@@ -42,7 +42,7 @@ export default function ExpandingHero({ image, alt, eyebrow, heading, ctaLabel =
 
         <motion.div style={{ y: textY }} className="relative z-10 mx-auto max-w-4xl px-6 text-center">
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-6">{eyebrow}</p>
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal mb-6">{eyebrow}</p>
           </Reveal>
           <Reveal delay={0.1}>
             <h1 className="font-display text-4xl sm:text-6xl leading-[1.1] text-paper mb-8">
@@ -52,7 +52,7 @@ export default function ExpandingHero({ image, alt, eyebrow, heading, ctaLabel =
           <Reveal delay={0.2}>
             <Link
               to={ctaTo}
-              className="inline-block rounded-full bg-amber px-8 py-4 text-ink font-mono text-sm uppercase tracking-widest hover:bg-amber-dim transition-colors"
+              className="inline-block rounded-full bg-teal px-8 py-4 text-ink font-mono text-sm uppercase tracking-widest hover:bg-teal-dim transition-colors"
             >
               {ctaLabel}
             </Link>

@@ -93,7 +93,7 @@ export default function Home() {
       <section className="py-24 border-t border-white/5">
         <div className="mx-auto max-w-5xl px-6 text-center">
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-4">Inspiration</p>
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal mb-4">Inspiration</p>
             <h2 className="font-display text-3xl sm:text-4xl mb-6">Gain Insights and Inspirations</h2>
             <p className="text-paper-dim max-w-2xl mx-auto leading-relaxed">
               We don&rsquo;t have to wait for the story to change to create change.
@@ -106,8 +106,8 @@ export default function Home() {
               ['Lead', 'Lead with compassion and courage, inspiring positive change and empowering others to reach their full potential.'],
             ].map(([title, body], i) => (
               <Reveal key={title} delay={i * 0.1}>
-                <div className="rounded-2xl border border-white/10 bg-ink-soft p-8 h-full hover:border-amber/40 hover:-translate-y-1 transition-all duration-300">
-                  <h3 className="font-display text-2xl text-amber mb-3">{title}</h3>
+                <div className="rounded-2xl border border-white/10 bg-ink-soft p-8 h-full hover:border-teal/40 hover:-translate-y-1 transition-all duration-300">
+                  <h3 className="font-display text-2xl text-teal mb-3">{title}</h3>
                   <p className="text-paper-dim text-sm leading-relaxed">{body}</p>
                 </div>
               </Reveal>
@@ -120,7 +120,7 @@ export default function Home() {
       <section className="py-24 border-t border-white/5">
         <div className="mx-auto max-w-6xl px-6">
           <Reveal className="text-center mb-16">
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-4">The Films</p>
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal mb-4">The Films</p>
             <h2 className="font-display text-3xl sm:text-4xl">
               Every day, people and communities are rising through the impossible.
             </h2>
@@ -129,10 +129,10 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
             {STORIES.map((s, i) => (
-              <Reveal key={s.eyebrow} delay={(i % 3) * 0.1}>
-                <article className="group rounded-2xl overflow-hidden border border-white/10 bg-ink-soft h-full flex flex-col hover:border-amber/40 transition-colors duration-300">
+              <Reveal key={s.eyebrow} delay={(i % 3) * 0.1} className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]">
+                <article className="group rounded-2xl overflow-hidden border border-white/10 bg-ink-soft h-full flex flex-col hover:border-teal/40 transition-colors duration-300">
                   <div className="relative h-48 overflow-hidden">
                     <img
                       src={s.image}
@@ -142,7 +142,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6 flex flex-col flex-1">
-                    <p className="font-mono text-[11px] uppercase tracking-widest text-amber mb-2">{s.eyebrow}</p>
+                    <p className="font-mono text-[11px] uppercase tracking-widest text-teal mb-2">{s.eyebrow}</p>
                     <h3 className="font-display text-lg mb-3 leading-snug">{s.title}</h3>
                     <p className="text-paper-dim text-sm leading-relaxed line-clamp-4 flex-1">{s.body}</p>
                     <p className="mt-4 text-xs font-mono text-slate-bright">Featuring {s.person}</p>
@@ -158,7 +158,7 @@ export default function Home() {
       <section className="py-24 border-t border-white/5">
         <div className="mx-auto max-w-5xl px-6 text-center">
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-4">DocuCourse Categories</p>
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal mb-4">DocuCourse Categories</p>
             <h2 className="font-display text-3xl sm:text-4xl mb-12">
               Stories and strategies for change in areas where we need it most, with more to come.
             </h2>
@@ -168,7 +168,7 @@ export default function Home() {
               <Reveal key={c} delay={i * 0.08}>
                 <Link
                   to="/courses"
-                  className="block rounded-xl border border-white/10 py-10 font-display text-xl hover:border-amber hover:text-amber transition-colors"
+                  className="block rounded-xl border border-white/10 py-10 font-display text-xl hover:border-teal hover:text-teal transition-colors"
                 >
                   {c}
                 </Link>
@@ -182,18 +182,18 @@ export default function Home() {
       <section className="py-24 bg-paper text-ink">
         <div className="mx-auto max-w-5xl px-6">
           <Reveal className="text-center mb-16">
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-deep mb-4">Testimonials</p>
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal-deep mb-4">Testimonials</p>
             <h2 className="font-display text-3xl sm:text-4xl">Here&rsquo;s What People Are Saying About DocuCourse</h2>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-8">
             {TESTIMONIALS.map((t, i) => (
               <Reveal key={t.name} delay={i * 0.1}>
                 <blockquote className="h-full flex flex-col rounded-2xl border border-ink/10 bg-white p-8 shadow-sm">
-                  <span className="font-display text-5xl text-amber-deep leading-none mb-4">&ldquo;</span>
+                  <span className="font-display text-5xl text-teal-deep leading-none mb-4">&ldquo;</span>
                   <p className="text-ink/70 text-sm leading-relaxed flex-1">{t.quote}</p>
                   <footer className="mt-6 font-mono text-xs uppercase tracking-widest">
                     <div className="text-ink">{t.name}</div>
-                    <div className="text-amber-deep mt-1">{t.role}</div>
+                    <div className="text-teal-deep mt-1">{t.role}</div>
                     <div className="text-ink/50">{t.org}</div>
                   </footer>
                 </blockquote>
@@ -210,7 +210,7 @@ export default function Home() {
             <h2 className="font-display text-3xl sm:text-4xl mb-6">Ready to Listen, Learn, and Lead?</h2>
             <Link
               to="/courses"
-              className="inline-block rounded-full bg-amber px-8 py-4 text-ink font-mono text-sm uppercase tracking-widest hover:bg-amber-dim transition-colors"
+              className="inline-block rounded-full bg-teal px-8 py-4 text-ink font-mono text-sm uppercase tracking-widest hover:bg-teal-dim transition-colors"
             >
               Get Access
             </Link>

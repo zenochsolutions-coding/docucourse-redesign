@@ -39,7 +39,7 @@ export default function Contact() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/85 to-ink/60" />
         <div className="relative mx-auto max-w-3xl px-6 text-center">
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-6">
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal mb-6">
               Gain Insights and Inspiration
             </p>
             <h1 className="font-display text-4xl sm:text-5xl mb-6">Contact Us</h1>
@@ -65,11 +65,11 @@ export default function Contact() {
                 difference. Sometimes, we just need a better understanding of the issues out there.
                 And then we need some practical steps on where to get started.
               </p>
-              <h2 className="font-mono text-xs uppercase tracking-widest text-amber mb-4">We Offer</h2>
+              <h2 className="font-mono text-xs uppercase tracking-widest text-teal mb-4">We Offer</h2>
               <ul className="space-y-4">
                 {OFFERINGS.map((o) => (
                   <li key={o} className="flex gap-3 text-sm text-paper-dim leading-relaxed">
-                    <span className="text-amber mt-1">&#10003;</span>
+                    <span className="text-teal mt-1">&#10003;</span>
                     <span>{o}</span>
                   </li>
                 ))}
@@ -93,7 +93,7 @@ export default function Contact() {
                     type="text"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full rounded-lg bg-ink border border-white/15 px-4 py-3 text-sm focus:border-amber focus:outline-none"
+                    className="w-full rounded-lg bg-ink border border-white/15 px-4 py-3 text-sm focus:border-teal focus:outline-none"
                   />
                 </div>
                 <div>
@@ -105,7 +105,7 @@ export default function Contact() {
                     type="email"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full rounded-lg bg-ink border border-white/15 px-4 py-3 text-sm focus:border-amber focus:outline-none"
+                    className="w-full rounded-lg bg-ink border border-white/15 px-4 py-3 text-sm focus:border-teal focus:outline-none"
                   />
                 </div>
                 <div>
@@ -117,12 +117,12 @@ export default function Contact() {
                     rows={5}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full rounded-lg bg-ink border border-white/15 px-4 py-3 text-sm focus:border-amber focus:outline-none resize-none"
+                    className="w-full rounded-lg bg-ink border border-white/15 px-4 py-3 text-sm focus:border-teal focus:outline-none resize-none"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full rounded-full bg-amber px-6 py-3.5 text-ink font-mono text-xs uppercase tracking-widest hover:bg-amber-dim transition-colors"
+                  className="w-full rounded-full bg-teal px-6 py-3.5 text-ink font-mono text-xs uppercase tracking-widest hover:bg-teal-dim transition-colors"
                 >
                   Send Message
                 </button>
