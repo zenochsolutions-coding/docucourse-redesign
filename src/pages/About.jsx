@@ -58,11 +58,11 @@ export default function About() {
         </div>
       </section>
 
-      <section className="border-t border-white/5">
-        <div className="relative pt-20 pb-16 px-6 text-center overflow-hidden">
-          <ParallaxBg image={journey} alt="Winding road stretching toward the horizon, representing a journey" opacity={0.35} />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/85 to-ink/60" />
-          <Reveal className="relative">
+      <section className="relative pt-40 pb-24 overflow-hidden border-t border-white/5">
+        <ParallaxBg image={journey} alt="Winding road stretching toward the horizon, representing a journey" opacity={0.35} />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/85 to-ink/60" />
+        <div className="relative mx-auto max-w-3xl px-6 text-center">
+          <Reveal>
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal mb-4">Gain Insight</p>
             <h2 className="font-display text-3xl sm:text-4xl max-w-2xl mx-auto">
               Join us on a compelling journey as we engage with passionate community changemakers.
@@ -72,8 +72,11 @@ export default function About() {
             </p>
           </Reveal>
         </div>
-        <HorizontalScrollPanels panels={PILLARS} />
       </section>
+
+      <div className="relative">
+        <HorizontalScrollPanels panels={PILLARS} />
+      </div>
 
       <section className="py-20 border-t border-white/5 text-center bg-ink-soft">
         <Reveal>
