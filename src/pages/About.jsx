@@ -39,19 +39,28 @@ export default function About() {
     path: '/about',
   })
 
-  // The static -PANEL_STICKY_VH margin still does the structural job of
-  // guaranteeing zero gap at rest (it cascades to every later sibling,
-  // Footer included). What it can't do on its own is control WHEN Share
-  // With Friends starts sliding up relative to the Lead panel, because it's
-  // driven by total document height, not by the panel gallery's own scroll
-  // progress. That mismatch was the actual bug: Share could start rising
-  // before Lead had even finished arriving on screen.
+  // Margin is PANEL_STICKY_VH minus 37vh, not the full 100vh. At the full
+  // 100vh overlap, Share+Footer's combined natural height falls short of
+  // the gallery section's own required scroll-track height (it needs to
+  // stay tall regardless of overlap, or the pin has nowhere to release
+  // into), so the document's total scrollable height ends up governed by
+  // the gallery, leaving a dead, unrendered stretch of scroll after the
+  // real footer content. Reducing the overlap lets Share+Footer's own
+  // stacked height become the taller (governing) side, so the footer's
+  // true bottom lines up with the actual end of the page, and Share lands
+  // with visible space above it at rest instead of flush to the very top.
+  //
+  // What it can't do on its own is control WHEN Share With Friends starts
+  // sliding up relative to the Lead panel, since it's driven by total
+  // document height, not by the panel gallery's own scroll progress. That
+  // mismatch was the actual sync bug: Share could start rising before Lead
+  // had even finished arriving on screen.
   //
   // Fix: share the gallery's own scrollYProgress/pinFraction here and use
   // it to drive an additional y offset on top of the static margin. Share
   // stays pushed further down than its margin position until Lead has
   // fully arrived (progress === pinFraction), then slides up into its
-  // already-correct resting spot as progress continues toward 1.
+  // margin-determined resting spot as progress continues toward 1.
   const galleryRef = useRef(null)
   const pinFraction = getPinFraction(PILLARS.length)
   const { scrollYProgress } = useScroll({
@@ -97,12 +106,10 @@ export default function About() {
         </div>
       </section>
 
-      <div className="relative">
-        <HorizontalScrollPanels panels={PILLARS} sectionRef={galleryRef} />
-      </div>
+      <HorizontalScrollPanels panels={PILLARS} sectionRef={galleryRef} />
 
       <motion.section
-        style={{ marginTop: `-${PANEL_STICKY_VH}vh`, y: shareY }}
+        style={{ marginTop: `-${PANEL_STICKY_VH - 37}vh`, y: shareY }}
         className="relative z-10 py-32 border-t border-white/5 text-center bg-ink-soft"
       >
         <Reveal>
