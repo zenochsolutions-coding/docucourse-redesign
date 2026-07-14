@@ -4,16 +4,23 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 export default function HorizontalScrollPanels({ panels }) {
   const ref = useRef(null)
   const n = panels.length
+  // Sticky pin height and total scroll distance are kept in sync so the
+  // panel gallery finishes its transform right as the pin releases, instead
+  // of leaving a stretch of scroll after the last panel where nothing moves.
+  const STICKY_VH = 65
+  const SECTION_VH_PER_PANEL = 70
+  const totalVh = n * SECTION_VH_PER_PANEL
+  const pinFraction = (totalVh - STICKY_VH) / totalVh
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end end'],
   })
 
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', `-${(n - 1) * 100}%`])
+  const x = useTransform(scrollYProgress, [0, pinFraction], ['0%', `-${(n - 1) * 100}%`])
 
   return (
-    <section ref={ref} className="relative" style={{ height: `${n * 100}vh` }}>
-      <div className="sticky top-0 h-[85vh] overflow-hidden flex">
+    <section ref={ref} className="relative" style={{ height: `${totalVh}vh` }}>
+      <div className="sticky top-0 overflow-hidden flex" style={{ height: `${STICKY_VH}vh` }}>
         <motion.div style={{ x }} className="flex">
           {panels.map((p, i) => (
             <PanelContent key={p.title} panel={p} index={i} total={n} />
@@ -24,16 +31,16 @@ export default function HorizontalScrollPanels({ panels }) {
       {/* progress dots */}
       <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-3">
         {panels.map((_, i) => (
-          <Dot key={i} index={i} total={n} scrollYProgress={scrollYProgress} />
+          <Dot key={i} index={i} total={n} pinFraction={pinFraction} scrollYProgress={scrollYProgress} />
         ))}
       </div>
     </section>
   )
 }
 
-function Dot({ index, total, scrollYProgress }) {
-  const start = index / total
-  const end = (index + 1) / total
+function Dot({ index, total, pinFraction, scrollYProgress }) {
+  const start = (index / total) * pinFraction
+  const end = ((index + 1) / total) * pinFraction
   const opacity = useTransform(
     scrollYProgress,
     [Math.max(0, start - 0.1), start, end, Math.min(1, end + 0.1)],
