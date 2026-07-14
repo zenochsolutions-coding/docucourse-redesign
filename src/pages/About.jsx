@@ -1,6 +1,6 @@
 import Reveal from '../components/Reveal'
 import ParallaxBg from '../components/ParallaxBg'
-import HorizontalScrollPanels from '../components/HorizontalScrollPanels'
+import HorizontalScrollPanels, { PANEL_STICKY_VH } from '../components/HorizontalScrollPanels'
 import useSeo from '../components/useSeo'
 import about from '../assets/stock/about.webp'
 import journey from '../assets/stock/journey.webp'
@@ -78,7 +78,7 @@ export default function About() {
         <HorizontalScrollPanels panels={PILLARS} />
       </div>
 
-      <section className="relative z-10 py-20 border-t border-white/5 text-center bg-ink-soft" style={{ marginTop: '-60vh' }}>
+      <section className="relative z-10 py-20 border-t border-white/5 text-center bg-ink-soft" style={{ marginTop: `-${PANEL_STICKY_VH}vh` }}>
         <Reveal>
           <div className="mx-auto max-w-2xl px-6">
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal mb-4">

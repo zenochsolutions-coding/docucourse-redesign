@@ -1,14 +1,19 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
+export const PANEL_STICKY_VH = 100
+
 export default function HorizontalScrollPanels({ panels }) {
   const ref = useRef(null)
   const n = panels.length
   // Sticky pin height and total scroll distance are kept in sync so the
   // panel gallery finishes its transform right as the pin releases, instead
   // of leaving a stretch of scroll after the last panel where nothing moves.
-  const STICKY_VH = 65
-  const SECTION_VH_PER_PANEL = 70
+  // PANEL_STICKY_VH fills the full viewport so no blank strip shows below
+  // the photo, and is exported so the next section can overlap the release
+  // scroll by this exact amount instead of a guessed value.
+  const STICKY_VH = PANEL_STICKY_VH
+  const SECTION_VH_PER_PANEL = 80
   const totalVh = n * SECTION_VH_PER_PANEL
   const pinFraction = (totalVh - STICKY_VH) / totalVh
   const { scrollYProgress } = useScroll({
