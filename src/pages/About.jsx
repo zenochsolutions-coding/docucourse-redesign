@@ -6,7 +6,7 @@ import about from '../assets/stock/about.webp'
 import journey from '../assets/stock/journey.webp'
 import listenPhoto from '../assets/stock/listen.webp'
 import learnPhoto from '../assets/stock/learn.webp'
-import leadPhoto from '../assets/stock/lead.webp'
+import leadPhoto from '../assets/stock/lead2.jpeg'
 
 const PILLARS = [
   {

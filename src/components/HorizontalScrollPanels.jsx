@@ -46,13 +46,16 @@ function PanelContent({ panel, index, total }) {
   return (
     <div className="relative w-screen h-full flex-shrink-0 flex items-center justify-center px-6 overflow-hidden">
       {panel.photo && (
-        <img
-          src={panel.photo}
-          alt={`${panel.title} background`}
-          className="absolute inset-0 h-full w-full object-cover"
-          style={{ opacity: 0.4 }}
-          loading="lazy"
-        />
+        <>
+          <img
+            src={panel.photo}
+            alt={`${panel.title} background`}
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{ opacity: 0.85 }}
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/30" />
+        </>
       )}
       <div className="relative max-w-2xl text-center">
         <div className="font-mono text-xs uppercase tracking-[0.3em] text-teal mb-6">
