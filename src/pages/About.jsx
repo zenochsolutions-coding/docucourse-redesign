@@ -78,7 +78,7 @@ export default function About() {
         <HorizontalScrollPanels panels={PILLARS} />
       </div>
 
-      <section className="py-20 border-t border-white/5 text-center bg-ink-soft">
+      <section className="relative z-10 py-20 border-t border-white/5 text-center bg-ink-soft" style={{ marginTop: '-60vh' }}>
         <Reveal>
           <div className="mx-auto max-w-2xl px-6">
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal mb-4">
