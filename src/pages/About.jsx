@@ -112,6 +112,20 @@ export default function About() {
         style={{ marginTop: `-${PANEL_STICKY_VH - 37}vh`, y: shareY }}
         className="relative z-10 py-32 border-t border-white/5 text-center bg-ink-soft"
       >
+        {/*
+          The pinned Lead panel needs a full viewport-height of scroll to
+          genuinely release and clear the screen, but there isn't a full
+          viewport-height of content after it (Share + Footer combined is
+          shorter than most real screens), so at rest the panel is still
+          technically present behind whatever space isn't covered by Share
+          or Footer's own boxes -- which shows as the photo bleeding through
+          above Share on any screen taller than roughly 750px.
+          This covers that regardless of actual screen height: absolutely
+          positioned, matches Share's own background, doesn't add to the
+          document's layout height, and 100vh always exceeds the real gap
+          since the gap itself is always less than one viewport height.
+        */}
+        <div className="absolute inset-x-0 bottom-full h-[100vh] bg-ink-soft" aria-hidden="true" />
         <Reveal>
           <div className="mx-auto max-w-2xl px-6">
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal mb-4">
