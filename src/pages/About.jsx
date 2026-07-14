@@ -1,6 +1,8 @@
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import Reveal from '../components/Reveal'
 import ParallaxBg from '../components/ParallaxBg'
-import HorizontalScrollPanels, { PANEL_STICKY_VH } from '../components/HorizontalScrollPanels'
+import HorizontalScrollPanels, { PANEL_STICKY_VH, getPinFraction } from '../components/HorizontalScrollPanels'
 import useSeo from '../components/useSeo'
 import about from '../assets/stock/about.webp'
 import journey from '../assets/stock/journey.webp'
@@ -37,11 +39,26 @@ export default function About() {
     path: '/about',
   })
 
-  // Pulls "Share With Friends" up to overlap the Lead panel's release
-  // scroll. Static margin (not a scroll-linked transform) is the correct
-  // tool here: it cascades to every later sibling (Footer included), so
-  // nothing after it drifts out of alignment. -PANEL_STICKY_VH is the
-  // exact distance CSS position:sticky needs to fully release.
+  // The static -PANEL_STICKY_VH margin still does the structural job of
+  // guaranteeing zero gap at rest (it cascades to every later sibling,
+  // Footer included). What it can't do on its own is control WHEN Share
+  // With Friends starts sliding up relative to the Lead panel, because it's
+  // driven by total document height, not by the panel gallery's own scroll
+  // progress. That mismatch was the actual bug: Share could start rising
+  // before Lead had even finished arriving on screen.
+  //
+  // Fix: share the gallery's own scrollYProgress/pinFraction here and use
+  // it to drive an additional y offset on top of the static margin. Share
+  // stays pushed further down than its margin position until Lead has
+  // fully arrived (progress === pinFraction), then slides up into its
+  // already-correct resting spot as progress continues toward 1.
+  const galleryRef = useRef(null)
+  const pinFraction = getPinFraction(PILLARS.length)
+  const { scrollYProgress } = useScroll({
+    target: galleryRef,
+    offset: ['start start', 'end end'],
+  })
+  const shareY = useTransform(scrollYProgress, [pinFraction, 1], ['40vh', '0vh'])
 
   return (
     <>
@@ -81,11 +98,11 @@ export default function About() {
       </section>
 
       <div className="relative">
-        <HorizontalScrollPanels panels={PILLARS} />
+        <HorizontalScrollPanels panels={PILLARS} sectionRef={galleryRef} />
       </div>
 
-      <section
-        style={{ marginTop: `-${PANEL_STICKY_VH}vh` }}
+      <motion.section
+        style={{ marginTop: `-${PANEL_STICKY_VH}vh`, y: shareY }}
         className="relative z-10 py-32 border-t border-white/5 text-center bg-ink-soft"
       >
         <Reveal>
@@ -104,7 +121,7 @@ export default function About() {
             </a>
           </div>
         </Reveal>
-      </section>
+      </motion.section>
     </>
   )
 }

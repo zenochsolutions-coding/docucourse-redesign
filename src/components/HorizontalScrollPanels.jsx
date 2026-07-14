@@ -4,8 +4,18 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 export const PANEL_STICKY_VH = 100
 export const PANEL_SECTION_VH_PER_PANEL = 80
 
-export default function HorizontalScrollPanels({ panels }) {
-  const ref = useRef(null)
+// Shared so any consumer (About.jsx) can compute the exact same
+// scroll-progress fraction the panel transform uses, instead of
+// re-deriving it separately or guessing a static value that can drift
+// out of sync with the panel transform.
+export function getPinFraction(n, stickyVh = PANEL_STICKY_VH, sectionVhPerPanel = PANEL_SECTION_VH_PER_PANEL) {
+  const totalVh = n * sectionVhPerPanel
+  return (totalVh - stickyVh) / totalVh
+}
+
+export default function HorizontalScrollPanels({ panels, sectionRef }) {
+  const localRef = useRef(null)
+  const ref = sectionRef || localRef
   const n = panels.length
   // Sticky pin height and total scroll distance are kept in sync so the
   // panel gallery finishes its transform right as the pin releases, instead
@@ -16,13 +26,16 @@ export default function HorizontalScrollPanels({ panels }) {
   const STICKY_VH = PANEL_STICKY_VH
   const SECTION_VH_PER_PANEL = PANEL_SECTION_VH_PER_PANEL
   const totalVh = n * SECTION_VH_PER_PANEL
-  const pinFraction = (totalVh - STICKY_VH) / totalVh
+  const pinFraction = getPinFraction(n, STICKY_VH, SECTION_VH_PER_PANEL)
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end end'],
   })
 
-  const x = useTransform(scrollYProgress, [0, pinFraction], ['0%', `-${(n - 1) * 100}%`])
+  // Percent-based x here would be relative to the track's OWN width (n*100vw),
+  // not the viewport, which overshoots by a factor of n. Use vw units instead,
+  // which are always relative to the viewport regardless of track width.
+  const x = useTransform(scrollYProgress, [0, pinFraction], ['0vw', `-${(n - 1) * 100}vw`])
 
   return (
     <section ref={ref} className="relative" style={{ height: `${totalVh}vh` }}>
