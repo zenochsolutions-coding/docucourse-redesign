@@ -1,6 +1,8 @@
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import Reveal from '../components/Reveal'
 import ParallaxBg from '../components/ParallaxBg'
-import HorizontalScrollPanels, { PANEL_STICKY_VH } from '../components/HorizontalScrollPanels'
+import HorizontalScrollPanels, { PANEL_STICKY_VH, PANEL_SECTION_VH_PER_PANEL } from '../components/HorizontalScrollPanels'
 import useSeo from '../components/useSeo'
 import about from '../assets/stock/about.webp'
 import journey from '../assets/stock/journey.webp'
@@ -36,6 +38,25 @@ export default function About() {
       'DocuCourse fosters diverse perspectives through curated documentary content, equipping individuals with the knowledge and strategies for positive change.',
     path: '/about',
   })
+
+  // Drives the "Share With Friends" slide-up independently of document
+  // height (a negative margin changes total scroll height and throws off
+  // timing at the very end; a transform doesn't). panelsWrapRef spans
+  // exactly the HorizontalScrollPanels box, so progress 0->1 here matches
+  // that section's own scroll-through exactly. entryStart is tuned to sit
+  // well inside Lead's own dwell window (which runs from 2/3 to 1 of
+  // pinFraction), so the slide begins while Lead is still fully visible.
+  // The transform always resolves to 0 (no shift) at progress 1, which is
+  // real document end, guaranteeing zero leftover gap at rest.
+  const panelsWrapRef = useRef(null)
+  const { scrollYProgress: panelsProgress } = useScroll({
+    target: panelsWrapRef,
+    offset: ['start start', 'end end'],
+  })
+  const totalVh = PILLARS.length * PANEL_SECTION_VH_PER_PANEL
+  const pinFraction = (totalVh - PANEL_STICKY_VH) / totalVh
+  const entryStart = pinFraction * 0.85
+  const shareY = useTransform(panelsProgress, [entryStart, 1], ['100vh', '0vh'])
 
   return (
     <>
@@ -74,11 +95,14 @@ export default function About() {
         </div>
       </section>
 
-      <div className="relative">
+      <div ref={panelsWrapRef} className="relative">
         <HorizontalScrollPanels panels={PILLARS} />
       </div>
 
-      <section className="relative z-10 py-20 border-t border-white/5 text-center bg-ink-soft" style={{ marginTop: `-${PANEL_STICKY_VH}vh` }}>
+      <motion.section
+        style={{ y: shareY }}
+        className="relative z-10 py-20 border-t border-white/5 text-center bg-ink-soft"
+      >
         <Reveal>
           <div className="mx-auto max-w-2xl px-6">
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal mb-4">
@@ -95,7 +119,7 @@ export default function About() {
             </a>
           </div>
         </Reveal>
-      </section>
+      </motion.section>
     </>
   )
 }
