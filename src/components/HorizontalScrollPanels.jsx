@@ -13,7 +13,7 @@ export default function HorizontalScrollPanels({ panels }) {
 
   return (
     <section ref={ref} className="relative" style={{ height: `${n * 100}vh` }}>
-      <div className="sticky top-0 h-[85vh] overflow-hidden flex items-center">
+      <div className="sticky top-0 h-[85vh] overflow-hidden flex">
         <motion.div style={{ x }} className="flex">
           {panels.map((p, i) => (
             <PanelContent key={p.title} panel={p} index={i} total={n} />
